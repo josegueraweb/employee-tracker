@@ -56,6 +56,9 @@ function startApp() {
         case "Add EMPLOYEE":
           addEmployee();
           break;
+        case "Update EMPLOYEE":
+          updateEmployee();
+          break;
         default:
           db.end();
           break;
@@ -63,3 +66,80 @@ function startApp() {
     });
 }
 
+function viewDepartments() {
+  const sql = "SELECT * FROM department";
+  console.table(res);
+}
+
+function viewRoles() {
+  const sql = "SELECT * FROM role";
+  console.table(res);
+}
+
+function viewEmployees() {
+  const sql = "SELECT * FROM employee";
+  console.table(res);
+}
+
+function addDepartment() {
+  inquirer.prompt({
+    type: "input",
+    name: "name",
+    message: "Enter name for new DEPARTMENT:",
+  });
+}
+
+function addRole() {
+  inquirer.prompt(
+    {
+      type: "input",
+      name: "name",
+      message: "Enter NAME for new ROLE:",
+    },
+    {
+      type: "input",
+      name: "salary",
+      message: "Enter SALARY for new ROLE:",
+    },
+    {
+      type: "list",
+      name: "department",
+      message: "Select DEPARTMENT for new ROLE:",
+    }
+  );
+}
+
+function addEmployee() {
+  inquirer.prompt(
+    {
+      type: "input",
+      name: "first_name",
+      message: "Enter EMPLOYEE first name:",
+    },
+    {
+      type: "input",
+      name: "last_name",
+      message: "Enter EMPLOYEE last name:",
+    },
+    {
+      type: "list",
+      name: "role",
+      message: "Select ROLE for new EMPLOYEE:",
+    }
+  );
+}
+
+function updateEmployee() {
+  inquirer.prompt(
+    {
+      type: "list",
+      name: "employee",
+      message: "Select EMPLOYEE to UPDATE:",
+    },
+    {
+      type: "list",
+      name: "role",
+      message: "Select new ROLE:",
+    },
+  );
+}
